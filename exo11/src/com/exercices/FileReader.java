@@ -48,21 +48,27 @@ public class FileReader {
                         yearProduction = Year.parse(parts[1]);
 
                         switch (parts[0]){
-                            case "Assiette ronde" :
-                                ustensil = new RoundedPlate(yearProduction,dimension);
-                                area = area + Math.PI * dimension * dimension;
+                            case "Assiette ronde" : {
+                                RoundedPlate roundedPlate = new RoundedPlate(yearProduction, dimension);
+                                area = area + roundedPlate.getArea();
+                                ustensil = roundedPlate;
+                            }
                                 break;
 
-                            case "cuillière" :
-                                ustensil = new Spoon(yearProduction,dimension);
+                            case "cuillière" : {
+                                ustensil = new Spoon(yearProduction, dimension);
                                 comptSpoon += 1;
+                            }
                                 break;
-                            case "Assiette carré" :
-                                ustensil = new SquaredPlate(yearProduction,dimension);
-                                area = area + dimension * dimension;
+                            case "Assiette carré" : {
+                                SquaredPlate squaredPlate = new SquaredPlate(yearProduction, dimension);
+                                area = area + squaredPlate.getArea();
+                                ustensil = squaredPlate;
+                            }
                                 break;
-                            default :
-                                ustensil = new Ustensil(yearProduction,dimension);
+                            default : {
+                                ustensil = new Ustensil(yearProduction, dimension);
+                            }
 
                         }
                         ustensil.setPrice();

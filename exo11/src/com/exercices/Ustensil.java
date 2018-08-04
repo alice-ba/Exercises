@@ -28,6 +28,11 @@ public class Ustensil {
             this.price = Year.now().getValue() - this.yearProduction.getValue() - 50;
         }
     }
+    
+   public double getDimension() {
+	   return dimension;
+   }   
+    
 
 
 
